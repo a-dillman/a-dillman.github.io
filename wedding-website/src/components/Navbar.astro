@@ -1,24 +1,101 @@
 <header>
     <nav class="nav-bar">
-        <a href="#home" class="link color-ivory">Home</a>
-        <a href="#qanda" class="link color-ivory">Q&A</a>
-        <a href="#timeline" class="link color-ivory">Timeline</a>
-        <a href="#registry" class="link color-ivory">Registry</a>
-        <a href="#rsvp" class="link color-ivory">RSVP</a>
+
+        <a href="#home" class="logo">
+            <img src="/images/wedding_logo_white.png" alt="A & A">
+        </a>
+
+        <button class="hamburger" aria-label="Open menu">
+            ☰
+        </button>
+
+        <div class="nav-links">
+            <a href="#home" class="link color-ivory">Home</a>
+            <a href="#qanda" class="link color-ivory">Q&amp;A</a>
+            <a href="#timeline" class="link color-ivory">Timeline</a>
+            <a href="#registry" class="link color-ivory">Registry</a>
+            <a href="#rsvp" class="link color-ivory">RSVP</a>
+        </div>
+
     </nav>
 </header>
 
 <style>
 .nav-bar {
-    background-color: rgb(119, 126, 53);
-    padding: 1rem;
+    background: rgb(119,126,53);
+
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: .75rem 2rem;
+
+    box-sizing: border-box;
+}
+
+.logo img {
+    height: 55px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
 }
 
 .link {
-    text-decoration: none;;
-    padding-right: 1rem;
+    text-decoration: none;
+    color: ivory;
+}
+
+.hamburger {
+    display: none;
+
+    font-size: 2rem;
+    color: ivory;
+
+    background: none;
+    border: none;
+
+    cursor: pointer;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+
+        position: absolute;
+        top: 75px;
+        left: 0;
+
+        width: 100%;
+
+        background: rgb(119,126,53);
+
+        flex-direction: column;
+        align-items: center;
+
+        padding: 1rem 0;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
 }
 
 </style>
+
+<script>
+    const hamburger = document.querySelector(".hamburger");
+    const links = document.querySelector(".nav-links");
+
+    hamburger.addEventListener("click", () => {
+        links.classList.toggle("open");
+    });
+</script>

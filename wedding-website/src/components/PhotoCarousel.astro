@@ -28,31 +28,32 @@ const images = [
 </script>
 
 <style>
-.frame {
-    width: 500px;
-    height: 500px;
+    .photo-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 
-    background-image: url("/images/floral-frame.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+    .frame {
+        --frame-size: min(500px, 90vw);
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+        width: var(--frame-size);
+        height: var(--frame-size);
 
-.photo-frame {
-    width: 350px;
-    height: 350px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-    overflow: hidden;
-    border-radius: 20px;
-}
+        background: url("/images/floral-frame.png") center/contain no-repeat;
 
-.photo-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+        margin: 2rem auto;
+    }
+
+    .photo-frame {
+        width: 70%;
+        height: 70%;
+
+        overflow: hidden;
+        border-radius: 20px;
+    }
 </style>

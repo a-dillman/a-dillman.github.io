@@ -2,6 +2,18 @@ body {
     margin: 0;
     font-family: "PT Serif", serif;
     background: rgb(244, 243, 233);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+html {
+    margin: 0;
+    min-height: 100%;
+}
+
+main {
+    flex: 1;
 }
 
 .script {
