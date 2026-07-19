@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    font-family: Georgia, serif;
+    background: #faf8f4;
+}
+
+.hero {
+    text-align: center;
+    padding: 5rem;
+}
+
+section {
+    padding: 5rem 2rem;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
