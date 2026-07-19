@@ -1,20 +1,37 @@
 body {
     margin: 0;
-    font-family: Georgia, serif;
-    background: #faf8f4;
+    font-family: "PT Serif", serif;
+    background: rgb(244, 243, 233);
 }
 
-.hero {
-    text-align: center;
-    padding: 5rem;
+.script {
+    font-family: "Pinyon Script", cursive;
 }
 
-section {
-    padding: 5rem 2rem;
+.ampersand {
+    font-family: "Alex Brush", cursive;
 }
 
-nav {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
+.color-green1 {
+    color: rgb(164, 163, 76);
+}
+
+.color-green2 {
+    color: rgb(119, 126, 53);
+}
+
+.color-ivory {
+    color: rgb(244, 243, 233);
+}
+
+.color-pink1 {
+    color: rgb(218, 133, 129);
+}
+
+.color-pink2 {
+    color: rgb(209, 106, 106);
+}
+
+.color-blue {
+    color: rgb(120, 157, 206);
 }

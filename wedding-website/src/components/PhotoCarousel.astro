@@ -1,0 +1,58 @@
+---
+const images = [
+    "/images/engagement-photos/IMG_1988.jpg",
+    "/images/engagement-photos/IMG_1989.jpg",
+    "/images/engagement-photos/IMG_2013.jpg",
+    "/images/engagement-photos/IMG_2015.jpg",
+    "/images/engagement-photos/IMG_2016.jpg",
+    "/images/engagement-photos/IMG_1996.jpg",
+    "/images/engagement-photos/IMG_2009.jpg",
+    "/images/engagement-photos/IMG_2014.jpg",
+];
+---
+<div class="frame">
+    <div class="photo-frame">
+        <img id="carousel-image" src={images[0]} alt="Audrey and Andrew" />
+    </div>
+</div>
+
+<script define:vars={{ images }}>
+    let current = 0;
+
+    const image = document.getElementById("carousel-image");
+
+    setInterval(() => {
+        current = (current + 1) % images.length;
+        image.src = images[current];
+    }, 3000);
+</script>
+
+<style>
+.frame {
+    width: 500px;
+    height: 500px;
+
+    background-image: url("/images/floral-frame.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-frame {
+    width: 350px;
+    height: 350px;
+
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+</style>
