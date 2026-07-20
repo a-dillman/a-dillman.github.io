@@ -1,0 +1,104 @@
+---
+const weddingDate = "2028-03-25";
+---
+
+<section class="countdown">
+    <div class="date-row">
+        <img
+            class="lace-heart"
+            src="/lace_heart_cropped2.png"
+            alt=""
+            aria-hidden="true"
+        />
+
+        <h2 id="date" class="script color-ivory"></h2>
+
+        <img
+            class="lace-heart"
+            src="/lace_heart_cropped2.png"
+            alt=""
+            aria-hidden="true"
+        />
+    </div>
+
+    <p id="days" class="color-ivory"></p>
+</section>
+
+<script define:vars={{ weddingDate }}>
+    const target = new Date(`${weddingDate}T00:00:00`);
+
+    function updateCountdown() {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        const difference = target - today;
+        const days = Math.round(difference / (1000 * 60 * 60 * 24));
+
+        document.getElementById("date").textContent =
+            `${target.getMonth() + 1}.${target.getDate()}.${target.getFullYear()}  `;
+
+        const daysElement = document.getElementById("days");
+
+        if (days > 1) {
+            daysElement.textContent = `${days} DAYS TO GO!`;
+        } else if (days === 1) {
+            daysElement.textContent = "1 DAY TO GO!";
+        } else if (days === 0) {
+            daysElement.textContent = "TODAY'S THE DAY!";
+        } else {
+            daysElement.textContent = "WE ARE MARRIED!";
+        }
+    }
+
+    updateCountdown();
+</script>
+
+<style>
+.countdown {
+    text-align: center;
+    padding: clamp(2rem, 6vw, 4rem);
+
+    background-image: url("/images/water_lilies.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.date-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(.75rem, 2vw, 2rem);
+
+    flex-wrap: nowrap;
+}
+
+.lace-heart {
+    width: clamp(40px, 8vw, 90px);
+    height: auto;
+
+    flex-shrink: 0;
+}
+
+.countdown h2 {
+    font-size: clamp(3rem, 10vw, 6rem);
+    margin: 0;
+    line-height: 1;
+}
+
+.countdown p {
+    font-size: clamp(.9rem, 2vw, 1.25rem);
+    margin-top: 1rem;
+    letter-spacing: .2em;
+}
+
+@media (max-width: 500px) {
+    .lace-heart {
+        width: clamp(30px, 10vw, 50px);
+    }
+
+    .date-row {
+        gap: .5rem;
+    }
+}
+</style>
