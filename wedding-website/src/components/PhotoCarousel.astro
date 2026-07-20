@@ -2,18 +2,34 @@
 const images = [
     "/images/engagement-photos/IMG_1988.jpg",
     "/images/engagement-photos/IMG_1989.jpg",
-    "/images/engagement-photos/IMG_2013.jpg",
+    "/images/engagement-photos/IMG_1992.jpg",
+    "/images/engagement-photos/IMG_2018.jpg",
     "/images/engagement-photos/IMG_2015.jpg",
     "/images/engagement-photos/IMG_2016.jpg",
     "/images/engagement-photos/IMG_1996.jpg",
+    "/images/engagement-photos/IMG_1999.jpg",
     "/images/engagement-photos/IMG_2009.jpg",
     "/images/engagement-photos/IMG_2014.jpg",
 ];
 ---
+
 <div class="frame">
+
+    <img
+        class="doily"
+        src="/images/doily.png"
+        alt=""
+        aria-hidden="true"
+    />
+
     <div class="photo-frame">
-        <img id="carousel-image" src={images[0]} alt="Audrey and Andrew" />
+        <img
+            id="carousel-image"
+            src={images[0]}
+            alt="Audrey and Andrew"
+        />
     </div>
+
 </div>
 
 <script define:vars={{ images }}>
@@ -22,38 +38,58 @@ const images = [
     const image = document.getElementById("carousel-image");
 
     setInterval(() => {
-        current = (current + 1) % images.length;
-        image.src = images[current];
+        setTimeout(() => {
+            current = (current + 1) % images.length;
+            image.src = images[current];
+        }, 500);
+
     }, 3000);
 </script>
 
 <style>
-    .photo-frame img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+.frame {
+    position: relative;
 
-    .frame {
-        --frame-size: min(500px, 90vw);
+    width: min(700px, 95vw);
+    aspect-ratio: 1.65;
 
-        width: var(--frame-size);
-        height: var(--frame-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    margin: 2rem auto;
+}
 
-        background: url("/images/floral-frame.png") center/contain no-repeat;
+.doily {
+    position: absolute;
 
-        margin: 2rem auto;
-    }
+    width: 100%;
+    height: 100%;
 
-    .photo-frame {
-        width: 70%;
-        height: 70%;
+    object-fit: contain;
 
-        overflow: hidden;
-        border-radius: 20px;
-    }
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+.photo-frame {
+    position: relative;
+
+    width: 82%;
+    height: 85%;
+
+    overflow: hidden;
+
+    border-radius: 50%;
+
+    z-index: 1;
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
 </style>
