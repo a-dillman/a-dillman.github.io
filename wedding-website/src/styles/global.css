@@ -1,3 +1,13 @@
+header {
+    position: relative;
+    z-index: 1000;
+}
+
+.nav-bar {
+    position: relative;
+    z-index: 1000;
+}
+
 body {
     margin: 0;
     font-family: "PT Serif", serif;
