@@ -1,0 +1,28 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="RSVP">
+    <section class="rsvp">
+    <img
+        class="envelope"
+        src="/images/rsvp.png"
+        alt=""
+        aria-hidden="true"
+    />
+    </section>
+</Layout>
+
+<style>
+    .rsvp {
+        text-align: center;
+        margin: 1rem;
+    }
+
+    .envelope {
+        display: block;
+        width: clamp(750px, 35vw, 350px);
+        height: auto;
+        margin: 0 auto;
+    }
+</style>
