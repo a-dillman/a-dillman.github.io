@@ -1,13 +1,13 @@
 ---
 const images = [
-    "/images/engagement-photos/IMG_1988.jpg",
-    "/images/engagement-photos/IMG_1989.jpg",
-    "/images/engagement-photos/IMG_1992.jpg",
-    "/images/engagement-photos/IMG_2018.jpg",
-    "/images/engagement-photos/IMG_2015.jpg",
-    "/images/engagement-photos/IMG_2016.jpg",
-    "/images/engagement-photos/IMG_1996.jpg",
-    "/images/engagement-photos/IMG_1999.jpg",
+    "/images/years/2026.png",
+    "/images/years/2025.png",
+    "/images/years/2024.png",
+    "/images/years/2023.png",
+    "/images/years/2022.png",
+    "/images/years/2021.png",
+    "/images/years/2020.png",
+    "/images/years/2019.png",
 ];
 ---
 
@@ -49,13 +49,6 @@ const images = [
     animation: scroll 140s linear infinite;
 }
 
-.track img {
-    width: clamp(220px, 32vw, 500px);
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
-    flex-shrink: 0;
-}
-
 .overlay {
     position: absolute;
     inset: 0;
@@ -77,9 +70,7 @@ const images = [
 .overlay h2 {
     margin: 0;
 
-    font-size: clamp(2.5rem, 7vw, 5rem);
-
-    text-shadow: 0 2px 10px rgba(0,0,0,.45);
+    font-size: clamp(3.5rem, 10vw, 7rem);
 }
 
 .rsvp-button {
@@ -131,5 +122,7 @@ const images = [
 .track img {
     height: 100vh;
     width: auto;
+    object-fit: cover;
+    flex-shrink: 0;
 }
 </style>
