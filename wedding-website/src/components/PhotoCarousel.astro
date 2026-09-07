@@ -23,26 +23,47 @@ const images = [
     />
 
     <div class="photo-frame">
+
         <img
-            id="carousel-image"
+            id="carousel-image-1"
+            class="carousel-image active"
             src={images[0]}
             alt="Audrey and Andrew"
         />
+
+        <img
+            id="carousel-image-2"
+            class="carousel-image"
+            src={images[1]}
+            alt=""
+            aria-hidden="true"
+        />
+
     </div>
 
 </div>
 
 <script define:vars={{ images }}>
     let current = 0;
+    let active = 1;
 
-    const image = document.getElementById("carousel-image");
+    const image1 = document.getElementById("carousel-image-1");
+    const image2 = document.getElementById("carousel-image-2");
 
     setInterval(() => {
-        setTimeout(() => {
-            current = (current + 1) % images.length;
-            image.src = images[current];
-        }, 500);
+        current = (current + 1) % images.length;
 
+        if (active === 1) {
+            image2.src = images[current];
+            image2.classList.add("active");
+            image1.classList.remove("active");
+            active = 2;
+        } else {
+            image1.src = images[current];
+            image1.classList.add("active");
+            image2.classList.remove("active");
+            active = 1;
+        }
     }, 3000);
 </script>
 
@@ -86,10 +107,23 @@ const images = [
     z-index: 1;
 }
 
-.photo-frame img {
+.carousel-image {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
     width: 100%;
     height: 100%;
 
     object-fit: cover;
+
+    opacity: 0;
+
+    transition: opacity 2s ease-in-out;
+}
+
+.carousel-image.active {
+    opacity: 1;
 }
 </style>
