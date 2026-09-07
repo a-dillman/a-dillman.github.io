@@ -1,0 +1,22 @@
+---
+const { text } = Astro.props;
+---
+
+<div class="answer">
+    <p class="color-pink1">{text}</p>
+</div>
+
+<style>
+.answer {
+    text-align: center;
+    padding: 0 1rem 2rem;
+}
+
+.answer p {
+    margin: 0;
+    font-family: "PT Serif", serif;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-weight: 400;
+    line-height: 1.6;
+}
+</style>
