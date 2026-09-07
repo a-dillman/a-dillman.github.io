@@ -6,25 +6,106 @@ import Answer from "../components/Answer.astro";
 ---
 
 <Layout title="Q&A">
-    <Title />
 
-    <!-- <Question text="Where is the wedding?" />
-    <Answer text="Our wedding will be held at The Taylor Mansion in Newport Kentucky." /> -->
+    <div class="fade-in">
+        <Title />
+    </div>
 
-    <Question text="What time should I arrive?" />
-    <Answer text="..." />
-    <!-- <Answer text="Doors will open for guests at x:xxPM and the ceremony will start promptly at x:xxPM." /> -->
+    <div class="fade-in">
+        <Question text="when should i rsvp by?" />
+        <Answer text="..." />
+    </div>
 
-    <Question text="Where should I park?" />
-    <Answer text="..." />
-    <!-- <Answer text="Guests will need to park at Newport on the Levee parking garage. There will be a shuttle to bring guests back and forth between the parking garage and the venue. However, the walk between the two only takes 7 minutes if you would rather walk." /> -->
+    <div class="fade-in">
+        <Question text="What time should I arrive?" />
+        <Answer text="..." />
+    </div>
 
-    <Question text="when will the shuttle be running?" />
-    <Answer text="..." />
-    <!-- <Answer text="..." /> -->
+    <div class="fade-in">
+        <Question text="Where should I park?" />
+        <Answer text="..." />
+    </div>
 
-    <Question text="What should I wear?" />
-    <Answer text="..." />
-    <!-- <Answer text="..." /> -->
+    <div class="fade-in">
+        <Question text="when will the shuttle be running?" />
+        <Answer text="..." />
+    </div>
+
+    <div class="fade-in">
+        <Question text="can i bring a plus one?" />
+        <Answer text="Any plus ones will be listed on your invitation." />
+    </div>
+
+    <div class="fade-in">
+        <Question text="are children allowed?" />
+        <Answer text="All invited guests will be listed on your invitation." />
+    </div>
+
+    <div class="fade-in attire-section">
+        <Question text="What should I wear?" />
+
+        <Answer text="Use this opportunity to get dressed up! We want you to feel your best, but would like for guests to avoid casual attire such as jeans and t-shirts. Our wedding colors are pinks, blues, and greens if you would like to match our theme!" />
+
+        <img
+            class="wedding-colors"
+            src="/images/wedding_colors.png"
+            alt="Wedding colors"
+        />
+    </div>
+
+    <div class="fade-in">
+        <Question text="will there be menu options for dietary restrictions?" />
+        <Answer text="If you have special dietary needs, please indicate them and the name of the guest they apply to on your RSVP. You can also reach out to one of us to let us know." />
+    </div>
 
 </Layout>
+
+<style>
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.wedding-colors {
+    display: block;
+    width: min(400px, 70vw);
+    height: auto;
+    margin: 0 auto;
+    padding: 0 2rem 2rem;
+}
+
+.attire-section .answer {
+    padding-bottom: 0 !important;
+}
+</style>
+
+<script>
+    const elements = document.querySelectorAll(".fade-in");
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        {
+            threshold: 0.15
+        }
+    );
+
+    elements.forEach((element) => {
+        observer.observe(element);
+    });
+</script>

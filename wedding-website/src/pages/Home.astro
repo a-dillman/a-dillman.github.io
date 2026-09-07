@@ -3,9 +3,53 @@ import Hero from "../components/Hero.astro";
 import PhotoCarousel from "../components/PhotoCarousel.astro";
 import Countdown from "../components/Countdown.astro";
 ---
-   
-<Hero />
 
-<PhotoCarousel />
+<div class="fade-in">
+    <Hero />
+</div>
 
-<Countdown />
+<div class="fade-in">
+    <PhotoCarousel />
+</div>
+
+<div class="fade-in">
+    <Countdown />
+</div>
+
+<style>
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+
+<script>
+    const elements = document.querySelectorAll(".fade-in");
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        {
+            threshold: 0.15
+        }
+    );
+
+    elements.forEach((element) => {
+        observer.observe(element);
+    });
+</script>
