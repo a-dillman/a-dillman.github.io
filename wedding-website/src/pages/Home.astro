@@ -19,11 +19,11 @@ import Countdown from "../components/Countdown.astro";
 <style>
 .fade-in {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(40px);
 
     transition:
-        opacity 0.8s ease,
-        transform 0.8s ease;
+        opacity 1s ease,
+        transform 1s ease;
 }
 
 .fade-in.show {
@@ -35,6 +35,18 @@ import Countdown from "../components/Countdown.astro";
 <script>
     const elements = document.querySelectorAll(".fade-in");
 
+    // Fade in anything already visible when the page loads
+    elements.forEach((element, index) => {
+        const rect = element.getBoundingClientRect();
+
+        if (rect.top < window.innerHeight) {
+            setTimeout(() => {
+                element.classList.add("show");
+            }, 300 + index * 250);
+        }
+    });
+
+    // Fade in the rest as you scroll
     const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
@@ -50,6 +62,8 @@ import Countdown from "../components/Countdown.astro";
     );
 
     elements.forEach((element) => {
-        observer.observe(element);
+        if (element.getBoundingClientRect().top >= window.innerHeight) {
+            observer.observe(element);
+        }
     });
 </script>
