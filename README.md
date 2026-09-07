@@ -1,4 +1,4 @@
-# a-dillman.github.io
+# Dillman Wedding
 Wedding Website
 
-this is the readme file
+we are getting married :)
